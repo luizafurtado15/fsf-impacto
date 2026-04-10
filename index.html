@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seu Impacto · Fraternidade Sem Fronteiras</title>
+  <meta name="description" content="Veja o impacto real que sua compra gerou para crianças e famílias ao redor do mundo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --fsf-purple: #7B2D8B;
+      --fsf-red: #C0392B;
+      --fsf-orange: #E67E22;
+      --fsf-light: #fdf6ff;
+      --text-dark: #1a1a1a;
+      --text-mid: #555;
+      --text-muted: #999;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #f9f4fb;
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* ── PAGE WRAPPER ── */
+    .page {
+      max-width: 520px;
+      margin: 0 auto;
+      background: white;
+      min-height: 100vh;
+      box-shadow: 0 0 60px rgba(123,45,139,0.08);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(150deg, #4a1260 0%, #7B2D8B 30%, #C0392B 70%, #E67E22 100%);
+      padding: 52px 28px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before, .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+    .hero::before { width: 260px; height: 260px; top: -80px; right: -60px; }
+    .hero::after  { width: 180px; height: 180px; bottom: -60px; left: -40px; }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.25);
+      margin-bottom: 20px;
+    }
+
+    .hero-hand-wrap {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .hero-hand-wrap img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.25));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.65;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    /* ── QTY PICKER ── */
+    .qty-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 24px 28px 6px;
+    }
+
+    .qty-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .qty-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--fsf-purple);
+      background: white;
+      color: var(--fsf-purple);
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      transition: all 0.15s;
+      line-height: 1;
+    }
+
+    .qty-btn:hover { background: var(--fsf-purple); color: white; }
+
+    .qty-num {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--fsf-purple);
+      min-width: 40px;
+      text-align: center;
+    }
+
+    /* ── COUNTER SECTION ── */
+    .counter-section {
+      background: var(--fsf-light);
+      margin: 16px 20px;
+      border-radius: var(--radius);
+      padding: 28px 20px;
+      text-align: center;
+      border: 1.5px dashed #d9b3e8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .counter-section::before {
+      content: '✦';
+      position: absolute;
+      font-size: 80px;
+      color: rgba(123,45,139,0.04);
+      top: -10px; right: -10px;
+    }
+
+    .counter-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .counter-number {
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--fsf-purple);
+      line-height: 1;
+      margin-bottom: 6px;
+      font-family: 'Playfair Display', serif;
+      transition: all 0.3s;
+    }
+
+    .counter-sub {
+      font-size: 14px;
+      color: var(--text-mid);
+      font-weight: 600;
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-head {
+      padding: 28px 24px 6px;
+      text-align: center;
+    }
+
+    .section-head h2 {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--fsf-purple);
+      margin-bottom: 6px;
+    }
+
+    .section-head p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── IMPACT GRID ── */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 12px 20px 0;
+    }
+
+    .impact-card {
+      border-radius: var(--radius);
+      padding: 20px 14px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .impact-card:hover { transform: translateY(-3px); }
+
+    .ic-icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .ic-num {
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 5px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .ic-label {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .ic-food   { background: #FFF3E0; } .ic-food   .ic-num, .ic-food   .ic-label { color: #BF360C; }
+    .ic-water  { background: #E3F2FD; } .ic-water  .ic-num, .ic-water  .ic-label { color: #0D47A1; }
+    .ic-school { background: #E8F5E9; } .ic-school .ic-num, .ic-school .ic-label { color: #1B5E20; }
+    .ic-health { background: #FCE4EC; } .ic-health .ic-num, .ic-health .ic-label { color: #880E4F; }
+    .ic-music  { background: #F3E5F5; } .ic-music  .ic-num, .ic-music  .ic-label { color: #4A148C; }
+    .ic-earth  { background: #E0F7FA; } .ic-earth  .ic-num, .ic-earth  .ic-label { color: #004D40; }
+
+    /* ── CHAIN SECTION ── */
+    .chain-section {
+      margin: 24px 20px 0;
+      background: #fff8f0;
+      border-left: 4px solid var(--fsf-orange);
+      border-radius: 0 14px 14px 0;
+      padding: 20px 18px;
+    }
+
+    .chain-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--fsf-orange);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 14px;
+    }
+
+    .chain-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 13.5px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .chain-item:last-child { margin-bottom: 0; }
+
+    .chain-dot {
+      width: 9px; height: 9px;
+      background: var(--fsf-orange);
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    /* ── AWARENESS ── */
+    .awareness-section {
+      margin: 24px 20px 0;
+      background: linear-gradient(140deg, #4a1260, #7B2D8B 50%, #C0392B);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .awareness-section::after {
+      content: '🌍';
+      position: absolute;
+      font-size: 100px;
+      opacity: 0.06;
+      bottom: -20px;
+      right: -10px;
+    }
+
+    .awareness-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .awareness-section > p {
+      font-size: 13.5px;
+      opacity: 0.88;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .awareness-stats {
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 18px;
+    }
+
+    .aw-stat strong {
+      display: block;
+      font-size: 24px;
+      font-weight: 900;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .aw-stat span {
+      font-size: 11px;
+      opacity: 0.75;
+      font-weight: 600;
+    }
+
+    /* ── SHARE ── */
+    .share-section {
+      margin: 24px 20px 0;
+      background: var(--fsf-light);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      text-align: center;
+    }
+
+    .share-section h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--fsf-purple);
+      margin-bottom: 6px;
+    }
+
+    .share-section p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #25D366;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .share-btn:hover { opacity: 0.88; }
+
+    /* ── CTAs ── */
+    .cta-section {
+      padding: 24px 20px 0;
+    }
+
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 17px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      border-radius: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: all 0.2s;
+      letter-spacing: 0.3px;
+    }
+
+    .cta-primary {
+      background: var(--fsf-purple);
+      color: white;
+      border: 2px solid var(--fsf-purple);
+    }
+
+    .cta-primary:hover { background: #6a2279; border-color: #6a2279; }
+
+    .cta-secondary {
+      background: white;
+      color: var(--fsf-purple);
+      border: 2px solid var(--fsf-purple);
+    }
+
+    .cta-secondary:hover { background: var(--fsf-light); }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      padding: 24px 24px 40px;
+    }
+
+    .footer p {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .footer strong {
+      color: var(--fsf-purple);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero        { animation: fadeUp 0.6s ease both; }
+    .counter-section { animation: fadeUp 0.6s 0.1s ease both; }
+    .impact-grid { animation: fadeUp 0.6s 0.2s ease both; }
+    .chain-section   { animation: fadeUp 0.6s 0.3s ease both; }
+    .awareness-section { animation: fadeUp 0.6s 0.35s ease both; }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Fraternidade Sem Fronteiras</div>
+    <div class="hero-hand-wrap">
+      <!-- Fallback emoji se a imagem não estiver disponível -->
+      <div style="font-size: 70px; line-height: 1; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2)); animation: float 3s ease-in-out infinite;">🫶</div>
+    </div>
+    <h1>Você fez<br>a diferença.</h1>
+    <p>Com a sua compra, você se tornou parte de algo muito maior do que uma camiseta.</p>
+  </div>
+
+  <!-- QTY PICKER -->
+  <div class="qty-wrap">
+    <span class="qty-label">Número de compras:</span>
+    <button class="qty-btn" onclick="changeQty(-1)" aria-label="Diminuir">−</button>
+    <span class="qty-num" id="qty-display">1</span>
+    <button class="qty-btn" onclick="changeQty(1)" aria-label="Aumentar">+</button>
+  </div>
+
+  <!-- COUNTER -->
+  <div class="counter-section">
+    <div class="counter-label">Crianças impactadas</div>
+    <div class="counter-number" id="main-counter">47</div>
+    <div class="counter-sub">por cada compra / doação realizada</div>
+  </div>
+
+  <!-- IMPACT HEADER -->
+  <div class="section-head">
+    <h2>A sua compra ajudou:</h2>
+    <p>Cada número abaixo representa vidas reais,<br>em países reais, com nomes e histórias.</p>
+  </div>
+
+  <!-- IMPACT CARDS -->
+  <div class="impact-grid">
+    <div class="impact-card ic-food">
+      <span class="ic-icon">🍽️</span>
+      <div class="ic-num" id="num-food">12</div>
+      <div class="ic-label">crianças a terem refeições nutritivas</div>
+    </div>
+    <div class="impact-card ic-water">
+      <span class="ic-icon">💧</span>
+      <div class="ic-num" id="num-water">8</div>
+      <div class="ic-label">famílias com acesso a água limpa</div>
+    </div>
+    <div class="impact-card ic-school">
+      <span class="ic-icon">📚</span>
+      <div class="ic-num" id="num-school">5</div>
+      <div class="ic-label">dias de aula garantidos para uma criança</div>
+    </div>
+    <div class="impact-card ic-health">
+      <span class="ic-icon">🩺</span>
+      <div class="ic-num" id="num-health">3</div>
+      <div class="ic-label">atendimentos de saúde básica realizados</div>
+    </div>
+    <div class="impact-card ic-music">
+      <span class="ic-icon">🎵</span>
+      <div class="ic-num" id="num-music">2</div>
+      <div class="ic-label">horas de música na Orquestra FSF</div>
+    </div>
+    <div class="impact-card ic-earth">
+      <span class="ic-icon">🌍</span>
+      <div class="ic-num" id="num-earth">1</div>
+      <div class="ic-label">jovem apoiado em Madagascar ou Moçambique</div>
+    </div>
+  </div>
+
+  <!-- CHAIN -->
+  <div class="chain-section">
+    <div class="chain-title">Por que isso importa?</div>
+    <div class="chain-item">
+      <div class="chain-dot"></div>
+      <span>Uma criança bem alimentada tem <strong>3× mais chances</strong> de frequentar a escola regularmente.</span>
+    </div>
+    <div class="chain-item">
+      <div class="chain-dot"></div>
+      <span>Acesso a água limpa reduz em <strong>80% as doenças</strong> infantis em comunidades vulneráveis.</span>
+    </div>
+    <div class="chain-item">
+      <div class="chain-dot"></div>
+      <span>Um jovem com educação <strong>transforma em média 4 famílias</strong> ao longo da vida.</span>
+    </div>
+    <div class="chain-item">
+      <div class="chain-dot"></div>
+      <span>Você não comprou uma peça de roupa. <strong>Você plantou um futuro.</strong></span>
+    </div>
+  </div>
+
+  <!-- AWARENESS -->
+  <div class="awareness-section">
+    <h3>O mundo precisa de mais pessoas como você.</h3>
+    <p>Mais de 700 milhões de pessoas ainda vivem em extrema pobreza. A FSF acredita que a mudança começa com gestos simples — como o seu.</p>
+    <div class="awareness-stats">
+      <div class="aw-stat">
+        <strong>+15</strong>
+        <span>países impactados</span>
+      </div>
+      <div class="aw-stat">
+        <strong>+20 mil</strong>
+        <span>vidas transformadas</span>
+      </div>
+      <div class="aw-stat">
+        <strong>100%</strong>
+        <span>amor sem fronteiras</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-section">
+    <h3>Espalhe a corrente do bem 💜</h3>
+    <p>Compartilhe sua compra e inspire mais pessoas a fazerem parte dessa transformação.</p>
+    <a class="share-btn" id="whatsapp-share" href="#" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Compartilhar no WhatsApp
+    </a>
+  </div>
+
+  <!-- CTAS -->
+  <div class="cta-section">
+    <a class="cta-btn cta-primary" href="https://fraternidadesemfronteiras.colabore.org/apadrinhemadagascar/single_step" target="_blank" rel="noopener">
+      Quero ajudar ainda mais →
+    </a>
+    <a class="cta-btn cta-secondary" href="https://www.fraternidadesemfronteiras.org.br" target="_blank" rel="noopener">
+      Conheça a FSF
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>
+      Esta landing page foi criada como projeto acadêmico de<br>
+      Publicidade e Propaganda.<br>
+      Os dados de impacto são estimativas baseadas nos<br>
+      projetos reais da FSF.<br><br>
+      <strong>Fraternidade Sem Fronteiras</strong><br>
+      fraternidadesemfronteiras.org.br
+    </p>
+  </div>
+
+</div>
+
+<script>
+  let qty = 1;
+  const base = { main: 47, food: 12, water: 8, school: 5, health: 3, music: 2, earth: 1 };
+
+  function animateNumber(el, target) {
+    const start = parseInt(el.textContent) || 0;
+    if (start === target) return;
+    const steps = 24;
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      el.textContent = Math.round(start + ((target - start) * step / steps));
+      if (step >= steps) { el.textContent = target; clearInterval(timer); }
+    }, 16);
+  }
+
+  function updateAll() {
+    document.getElementById('qty-display').textContent = qty;
+    animateNumber(document.getElementById('main-counter'), base.main * qty);
+    animateNumber(document.getElementById('num-food'),     base.food  * qty);
+    animateNumber(document.getElementById('num-water'),    base.water * qty);
+    animateNumber(document.getElementById('num-school'),   base.school * qty);
+    animateNumber(document.getElementById('num-health'),   base.health * qty);
+    animateNumber(document.getElementById('num-music'),    base.music * qty);
+    animateNumber(document.getElementById('num-earth'),    base.earth * qty);
+
+    const msg = `Fiz ${qty} compra(s) na campanha Fraternidade Sem Fronteiras e impactei ${base.main * qty} crianças! 💜 Veja o impacto da sua compra também!`;
+    document.getElementById('whatsapp-share').href = 'https://wa.me/?text=' + encodeURIComponent(msg);
+  }
+
+  function changeQty(delta) {
+    qty = Math.max(1, Math.min(20, qty + delta));
+    updateAll();
+  }
+
+  updateAll();
+</script>
+</body>
+</html>
